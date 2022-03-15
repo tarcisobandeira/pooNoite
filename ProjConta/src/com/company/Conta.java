@@ -7,7 +7,7 @@ public class Conta {
     public String nomeCliente;
 
     public boolean sacar(double i){
-        if(saldo > 0){
+        if(saldo > 0 && i < saldo){
             saldo -= i;
             return true;
         }
@@ -22,6 +22,6 @@ public class Conta {
         return  "--------------------------\nNome do Cliente: " + nomeCliente
                 + "\nConta: " + conta
                 + "\nAgencia: " + agencia
-                + "\nSaldo: " + saldo + "--------------------------\n";
+                + "\nSaldo: " + saldo + "\n--------------------------\n";
     }
 }
