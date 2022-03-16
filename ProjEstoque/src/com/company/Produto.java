@@ -34,7 +34,7 @@ public class Produto {
     }
 
     public void checarNivel(){
-        if(nivel < quantidade){
+        if(nivel > quantidade){
             System.out.println("Nivel abaixo do disponivel, " +
                     "avisar o setor de compras.");
         }else{

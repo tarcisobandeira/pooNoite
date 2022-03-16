@@ -61,27 +61,49 @@ public class GerenciarProduto {
     }
 
     public static void execDarEntrada(){
-        if(p != null){
+        if(p.descricao != null){
             System.out.println("Digite o valor para a entrada do estoque: ");
             long l = (Long.parseLong(sn.nextLine()));
             if(p.entrada(l)){
-                System.out.println("Quantidade: " + l + " foi adicionada ao produto " + p.descricao + ". Estoque atual: " + p.quantidade);
+                System.out.println("Quantidade: " + l + " foi adicionada ao produto "
+                        + p.descricao + ". Estoque atual: " + p.quantidade);
             }else{
-                System.out.println("");
+                System.out.println("Quantidade nao pode ser menor ou igual a zero.");
             }
+        }else {
+            System.out.println("Voce nao cadastrou o produto.");
         }
-        System.out.println("Voce nao cadastrou o produto.");
     }
 
     public static void execDarSaida(){
-
+        if(p.descricao != null){
+            System.out.println("Digite o valor para a saida do estoque: ");
+            long l = (Long.parseLong(sn.nextLine()));
+            if(p.saida(l)){
+                System.out.println("Quantidade: " + l + " foi retirada do produto "
+                        + p.descricao + ". Estoque atual: " + p.quantidade);
+            }else{
+                System.out.println("Quantidade nao pode ser menor que zero, igual " +
+                        "a zero ou maior que a quantidade do produto.");
+            }
+        }else {
+            System.out.println("Voce nao cadastrou o produto.");
+        }
     }
 
     public static void execMostrarNivel(){
-        p.checarNivel();
+        if(p.descricao != null){
+            p.checarNivel();
+        }else{
+            System.out.println("Voce nao cadastrou o produto.");
+        }
     }
 
     public static void exercConsultar(){
-        p.imprimir();
+        if(p.descricao != null){
+            p.imprimir();
+        }else{
+            System.out.println("Voce nao cadastrou o produto.");
+        }
     }
 }
