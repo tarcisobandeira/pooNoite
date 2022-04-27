@@ -1,27 +1,50 @@
 package com.company;
 
-public class Conta {
-    public String conta;
-    public String agencia;
-    public double saldo;
-    public String nomeCliente;
+public abstract class Conta {
+    private int id;
+    private Cliente cliente;
+    private double saldo;
 
-    public boolean sacar(double i){
-        if(saldo > 0 && i < saldo){
-            saldo -= i;
+    public Conta(int id, Cliente cliente){
+        this.id =  id;
+        this.cliente = cliente;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    @Override
+    public String  toString() {
+        return "\nID da Conta = " + id + cliente.toString() +
+                "Saldo = " + saldo;
+    }
+
+    public boolean depositar(double valor){
+        if(valor > 0){
+            saldo += valor;
             return true;
         }
         return false;
     }
 
-    public void depositar(double i){
-        saldo += i;
-    }
-
-    public String imprimir(){
-        return  "--------------------------\nNome do Cliente: " + nomeCliente
-                + "\nConta: " + conta
-                + "\nAgencia: " + agencia
-                + "\nSaldo: " + saldo + "\n--------------------------\n";
+    public boolean sacar(double valor){
+        if(valor <= saldo){
+            saldo -= valor;
+            return true;
+        }
+        return false;
     }
 }
